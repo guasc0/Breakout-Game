@@ -15,6 +15,7 @@
 		321DEC941E714C6400B8952F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 321DEC921E714C6400B8952F /* Main.storyboard */; };
 		321DEC961E714C6400B8952F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 321DEC951E714C6400B8952F /* Assets.xcassets */; };
 		321DEC991E714C6400B8952F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 321DEC971E714C6400B8952F /* LaunchScreen.storyboard */; };
+		321DECA11E714EE600B8952F /* Blocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321DECA01E714EE600B8952F /* Blocks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		321DEC951E714C6400B8952F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		321DEC981E714C6400B8952F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		321DEC9A1E714C6400B8952F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		321DECA01E714EE600B8952F /* Blocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blocks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				321DEC8A1E714C6400B8952F /* GameScene.sks */,
 				321DEC8C1E714C6400B8952F /* Actions.sks */,
 				321DEC8E1E714C6400B8952F /* GameScene.swift */,
+				321DECA01E714EE600B8952F /* Blocks.swift */,
 				321DEC901E714C6400B8952F /* GameViewController.swift */,
 				321DEC921E714C6400B8952F /* Main.storyboard */,
 				321DEC951E714C6400B8952F /* Assets.xcassets */,
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				321DEC8F1E714C6400B8952F /* GameScene.swift in Sources */,
+				321DECA11E714EE600B8952F /* Blocks.swift in Sources */,
 				321DEC911E714C6400B8952F /* GameViewController.swift in Sources */,
 				321DEC891E714C6400B8952F /* AppDelegate.swift in Sources */,
 			);
