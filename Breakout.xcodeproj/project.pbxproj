@@ -18,6 +18,7 @@
 		32E6ABB41E74364F00C7F372 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E6ABB31E74364F00C7F372 /* Ball.swift */; };
 		32E6ABB61E744C6600C7F372 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E6ABB51E744C6600C7F372 /* GameOverScene.swift */; };
 		32E6ABBA1E7469B500C7F372 /* collision.wav in Resources */ = {isa = PBXBuildFile; fileRef = 32E6ABB91E7469B500C7F372 /* collision.wav */; };
+		32E6ABBC1E756F6000C7F372 /* StartGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E6ABBB1E756F6000C7F372 /* StartGameScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		32E6ABB31E74364F00C7F372 /* Ball.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		32E6ABB51E744C6600C7F372 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		32E6ABB91E7469B500C7F372 /* collision.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = collision.wav; sourceTree = "<group>"; };
+		32E6ABBB1E756F6000C7F372 /* StartGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartGameScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,11 +71,12 @@
 				321DEC881E714C6400B8952F /* AppDelegate.swift */,
 				321DEC8A1E714C6400B8952F /* GameScene.sks */,
 				321DEC8C1E714C6400B8952F /* Actions.sks */,
+				32E6ABBB1E756F6000C7F372 /* StartGameScene.swift */,
 				321DEC8E1E714C6400B8952F /* GameScene.swift */,
-				32E6ABB91E7469B500C7F372 /* collision.wav */,
 				32E6ABB51E744C6600C7F372 /* GameOverScene.swift */,
 				32E6ABB31E74364F00C7F372 /* Ball.swift */,
 				321DEC901E714C6400B8952F /* GameViewController.swift */,
+				32E6ABB91E7469B500C7F372 /* collision.wav */,
 				321DEC921E714C6400B8952F /* Main.storyboard */,
 				321DEC951E714C6400B8952F /* Assets.xcassets */,
 				321DEC971E714C6400B8952F /* LaunchScreen.storyboard */,
@@ -159,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32E6ABB61E744C6600C7F372 /* GameOverScene.swift in Sources */,
+				32E6ABBC1E756F6000C7F372 /* StartGameScene.swift in Sources */,
 				321DEC8F1E714C6400B8952F /* GameScene.swift in Sources */,
 				32E6ABB41E74364F00C7F372 /* Ball.swift in Sources */,
 				321DEC911E714C6400B8952F /* GameViewController.swift in Sources */,

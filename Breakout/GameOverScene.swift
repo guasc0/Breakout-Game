@@ -41,8 +41,8 @@ class GameOverScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let backToGame = GameScene(size: self.size)
-        self.view?.presentScene(backToGame)
+        let backToGame = StartGameScene(size: self.size)
+        self.view?.presentScene(backToGame, transition: SKTransition.fade(with: UIColor.red, duration: 1.0))
     }
 
     required init(coder aDecoder: NSCoder) {

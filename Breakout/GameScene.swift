@@ -36,19 +36,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         //createBall()
         
         ball = self.childNode(withName: "ball") as! SKSpriteNode
-        let ballSprite = SKSpriteNode(imageNamed: "ball")
-        ballSprite.xScale = 0.25
-        ballSprite.yScale = 0.25
-        addChild(ballSprite)
-        playerBall = Ball(sprite: ballSprite)
+        //let ballSprite = SKSpriteNode(imageNamed: "ball")
+        //ballSprite.xScale = 0.25
+        //ballSprite.yScale = 0.25
+        //addChild(ballSprite)
+        //playerBall = Ball(sprite: ballSprite)
         
         padel = self.childNode(withName: "padel") as! SKSpriteNode
         scoreLabel = self.childNode(withName: "score") as! SKLabelNode
         blocks = self.childNode(withName: "blocks") as! SKSpriteNode
-        ball.physicsBody?.applyImpulse(CGVector(dx: 25, dy: 140))
-        
-        
-        
+        ball.physicsBody?.applyImpulse(CGVector(dx: 30, dy: 140))
         
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
         border.friction = 0
@@ -122,24 +119,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     override func update(_ currentTime: TimeInterval) {
         scoreLabel.text = "Score: \(score)"
         if score == 21{
+            
             let youWonScene = GameOverScene(size: self.frame.size, playerWon:true)
-            self.view?.presentScene(youWonScene)
-            //scoreLabel.fontSize = 130
-            //scoreLabel.text = "YOU WON!!!"
-            //ball.removeFromParent()
-            //padel.removeFromParent()
-            //self.view?.isPaused = true
+            self.view?.presentScene(youWonScene, transition: SKTransition.doorway(withDuration: 1.0))
+           
         }
         
         if ball.position.y < padel.position.y{
-            let youLostScene = GameOverScene(size: self.frame.size, playerWon:false)
-            self.view?.presentScene(youLostScene)
             
-            //scoreLabel.text = "YOU LOST!!!"
-            //self.view?.isPaused = true
-            //blocks.removeFromParent()
-            //padel.isHidden = true
-            //ball.isHidden = true
+            let youLostScene = GameOverScene(size: self.frame.size, playerWon:false)
+            self.view?.presentScene(youLostScene, transition: SKTransition.doorway(withDuration: 1.0))
             
         }
         
@@ -162,8 +151,5 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         
         
     }*/
-    
-   
-    
     
 }
