@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		320EE6481E75844A005BD53E /* StartGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 320EE6471E75844A005BD53E /* StartGameScene.sks */; };
 		321DEC891E714C6400B8952F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321DEC881E714C6400B8952F /* AppDelegate.swift */; };
 		321DEC8B1E714C6400B8952F /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 321DEC8A1E714C6400B8952F /* GameScene.sks */; };
 		321DEC8D1E714C6400B8952F /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 321DEC8C1E714C6400B8952F /* Actions.sks */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		320EE6471E75844A005BD53E /* StartGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartGameScene.sks; sourceTree = "<group>"; };
 		321DEC851E714C6400B8952F /* Breakout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Breakout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		321DEC881E714C6400B8952F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		321DEC8A1E714C6400B8952F /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			children = (
 				321DEC881E714C6400B8952F /* AppDelegate.swift */,
 				321DEC8A1E714C6400B8952F /* GameScene.sks */,
+				320EE6471E75844A005BD53E /* StartGameScene.sks */,
 				321DEC8C1E714C6400B8952F /* Actions.sks */,
 				32E6ABBB1E756F6000C7F372 /* StartGameScene.swift */,
 				321DEC8E1E714C6400B8952F /* GameScene.swift */,
@@ -150,6 +153,7 @@
 				321DEC961E714C6400B8952F /* Assets.xcassets in Resources */,
 				32E6ABBA1E7469B500C7F372 /* collision.wav in Resources */,
 				321DEC991E714C6400B8952F /* LaunchScreen.storyboard in Resources */,
+				320EE6481E75844A005BD53E /* StartGameScene.sks in Resources */,
 				321DEC8D1E714C6400B8952F /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

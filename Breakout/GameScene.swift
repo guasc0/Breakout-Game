@@ -13,13 +13,15 @@ import AVFoundation
 class GameScene: SKScene, SKPhysicsContactDelegate  {
     
     
-    var playerBall : Ball!
+    //var playerBall : Ball!
     var target : CGPoint = CGPoint(x: 0, y: 0)
     var ball = SKSpriteNode()
     var padel = SKSpriteNode()
     var scoreLabel = SKLabelNode()
     var blocks = SKSpriteNode()
-    var score: Int = 0
+    var score: Int = 0 
+    var firstTouch = false
+    
     var audioPlayer: AVAudioPlayer!
     
     override func didMove(to view: SKView) {
@@ -37,15 +39,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         
         ball = self.childNode(withName: "ball") as! SKSpriteNode
         //let ballSprite = SKSpriteNode(imageNamed: "ball")
-        //ballSprite.xScale = 0.25
-        //ballSprite.yScale = 0.25
-        //addChild(ballSprite)
         //playerBall = Ball(sprite: ballSprite)
+        //playerBall.sprite.position = CGPoint(x: self.frame.midX, y: -600)
+        //playerBall.sprite.xScale = 0.25
+        //playerBall.sprite.yScale = 0.25
+        //addChild(ballSprite)
         
         padel = self.childNode(withName: "padel") as! SKSpriteNode
         scoreLabel = self.childNode(withName: "score") as! SKLabelNode
         blocks = self.childNode(withName: "blocks") as! SKSpriteNode
-        ball.physicsBody?.applyImpulse(CGVector(dx: 30, dy: 140))
+        
         
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
         border.friction = 0
@@ -62,6 +65,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        if !firstTouch{
+            ball.physicsBody?.applyImpulse(CGVector(dx: 30, dy: 100))
+            firstTouch = true
+        }
         
         for touch in touches {
             
@@ -88,6 +96,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         let bodyAName = contact.bodyA.node?.name
         let bodyBName = contact.bodyB.node?.name
         
+        if bodyAName == "ball" && bodyBName == "padel" || bodyAName == "padel" && bodyBName == "ball" {
+            if score == 5 {
+                ball.physicsBody?.applyImpulse(CGVector(dx: -30, dy: -100))
+                ball.physicsBody?.applyImpulse(CGVector(dx: 30, dy: 150))
+            } else if score == 10 {
+                ball.physicsBody?.applyImpulse(CGVector(dx: -30, dy: -150))
+                ball.physicsBody?.applyImpulse(CGVector(dx: 30, dy: 200))
+            }
+            
+        }
+        
         if bodyAName == "ball" && bodyBName == "blocks" || bodyAName == "blocks" && bodyBName == "ball"{
             
             if bodyAName == "blocks" {
@@ -100,25 +119,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
                 contact.bodyB.node?.removeFromParent()
                 score += 1
             }
+            
+        
         }
+        
+        
     }
     
-   
-    
-    /*func createBall(){
-        let ball = SKSpriteNode(imageNamed: "ball")
-        ball.xScale = 0.25
-        ball.yScale = 0.25
-        ball.position = CGPoint(x: 0, y: -475)
-        ball.physicsBody? = SKPhysicsBody(texture: ball.texture!, size: ball.texture!.size())
-        ball.physicsBody?.applyImpulse(CGVector(dx: 2, dy: 150))
-        addChild(ball)
-    }*/
-    
-    
-    override func update(_ currentTime: TimeInterval) {
+  override func update(_ currentTime: TimeInterval) {
         scoreLabel.text = "Score: \(score)"
-        if score == 21{
+        if score == 25{
             
             let youWonScene = GameOverScene(size: self.frame.size, playerWon:true)
             self.view?.presentScene(youWonScene, transition: SKTransition.doorway(withDuration: 1.0))
@@ -141,8 +151,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
             let deltaTime = currentTime - t
             playerBall.update(deltaTime: Float(deltaTime))
             
-            let dx = target.x - playerBall.sprite.position.x
-            let dy = target.y - playerBall.sprite.position.y
+            let dx = target.x - 100
+            let dy = target.y - -1000
             playerBall.direction = atan2f(Float(dy), Float(dx))
             
         }

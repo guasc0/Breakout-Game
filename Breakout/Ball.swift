@@ -13,7 +13,7 @@ class Ball {
 
     let sprite : SKSpriteNode
     var direction : Float = Float.pi * 0.5
-    var speed : Float = 500
+    var speed : Float = 600
     
     init(sprite: SKSpriteNode) {
         self.sprite = sprite
