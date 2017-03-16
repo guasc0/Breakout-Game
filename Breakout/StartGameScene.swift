@@ -55,10 +55,15 @@ class StartGameScene: SKScene {
         addChild(startGameLabel1)
         addChild(startGameLabel2)
         addChild(tapToPlay)
+        
+        
+      
     }
     
+    
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let startGame = GameScene(fileNamed: "GameScene")!
+        let startGame = Level1(fileNamed: "Level1")!
         startGame.scaleMode = .aspectFill
         self.view?.presentScene(startGame)
     }

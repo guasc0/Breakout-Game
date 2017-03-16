@@ -15,13 +15,22 @@ class GameOverScene: SKScene {
     
         let gameOverLabel = SKLabelNode(fontNamed: "Avenir-Black")
         let playAgainLabel = SKLabelNode(fontNamed: "Avenir-Black")
+        let scoreLabel = SKLabelNode(fontNamed: "Avenir-Black")
         self.backgroundColor = UIColor.black
+        
         gameOverLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
         
-        playAgainLabel.position = CGPoint(x: self.frame.midX, y: 500)
+        scoreLabel.position = CGPoint(x: self.frame.midX, y: 500)
+        scoreLabel.fontSize = 50
+        scoreLabel.fontColor = UIColor.white
+        scoreLabel.text = "Your score: \(Level1.score)"
+        
+        playAgainLabel.position = CGPoint(x: self.frame.midX, y: 400)
         playAgainLabel.fontSize = 40
         playAgainLabel.fontColor = UIColor.white
         playAgainLabel.text = "Tap the screen to play again"
+        
+        addChild(scoreLabel)
         addChild(playAgainLabel)
         addChild(gameOverLabel)
         
@@ -43,7 +52,7 @@ class GameOverScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let backToGame = GameScene(fileNamed:"GameScene")!
+        let backToGame = Level1(fileNamed:"Level1")!
         backToGame.scaleMode = .aspectFill
         self.view?.presentScene(backToGame, transition: SKTransition.fade(with: UIColor.red, duration: 0.8))
     }
