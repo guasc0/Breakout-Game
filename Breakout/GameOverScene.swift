@@ -18,14 +18,14 @@ class GameOverScene: SKScene {
         let scoreLabel = SKLabelNode(fontNamed: "Avenir-Black")
         self.backgroundColor = UIColor.black
         
-        gameOverLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+        gameOverLabel.position = CGPoint(x: self.frame.midX, y: 800)
         
-        scoreLabel.position = CGPoint(x: self.frame.midX, y: 500)
+        scoreLabel.position = CGPoint(x: self.frame.midX, y: 600)
         scoreLabel.fontSize = 50
         scoreLabel.fontColor = UIColor.white
-        scoreLabel.text = "Your score: \(Level1.score)"
         
-        playAgainLabel.position = CGPoint(x: self.frame.midX, y: 400)
+        
+        playAgainLabel.position = CGPoint(x: self.frame.midX, y: 500)
         playAgainLabel.fontSize = 40
         playAgainLabel.fontColor = UIColor.white
         playAgainLabel.text = "Tap the screen to play again"
@@ -39,11 +39,13 @@ class GameOverScene: SKScene {
             gameOverLabel.fontSize = 107
             gameOverLabel.fontColor = UIColor.green
             gameOverLabel.text = "YOU WON"
+            scoreLabel.text = "Your score: \(Level1.score + 1)"
             gameOverLabel.run(blinkingLabel())
         } else {
             gameOverLabel.fontSize = 98
             gameOverLabel.fontColor = UIColor.red
             gameOverLabel.text = "GAME OVER"
+            scoreLabel.text = "Your score: \(Level1.score)"
             gameOverLabel.run(blinkingLabel())
         }
         
@@ -54,7 +56,7 @@ class GameOverScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let backToGame = Level1(fileNamed:"Level1")!
         backToGame.scaleMode = .aspectFill
-        self.view?.presentScene(backToGame, transition: SKTransition.fade(with: UIColor.red, duration: 0.8))
+        self.view?.presentScene(backToGame, transition: SKTransition.fade(with: UIColor.black, duration: 0.8))
     }
 
     required init(coder aDecoder: NSCoder) {

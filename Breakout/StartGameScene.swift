@@ -9,8 +9,8 @@
 import SpriteKit
 import QuartzCore
 
-class StartGameScene: SKScene {
-    // Main menu, need to figure out how to make a scene the starting scene.
+class StartGameScene: SKScene, SKPhysicsContactDelegate {
+    
     
     override func didMove(to view: SKView) {
         
@@ -20,8 +20,25 @@ class StartGameScene: SKScene {
         let startGameLabel1 = SKLabelNode(fontNamed: "Avenir-Black")
         let startGameLabel2 = SKLabelNode(fontNamed: "Avenir-Black")
         let tapToPlay = SKLabelNode(fontNamed: "Avenir-Black")
+        var ball1 = SKSpriteNode()
+        var ball2 = SKSpriteNode()
+        var ball3 = SKSpriteNode()
         
         self.backgroundColor = UIColor.black
+        
+        let border = SKPhysicsBody(edgeLoopFrom: self.frame)
+        border.friction = 0
+        border.restitution = 1
+        self.physicsBody = border
+        self.physicsWorld.contactDelegate = self
+        
+        ball1 = self.childNode(withName: "ball1") as! SKSpriteNode
+        ball1.physicsBody?.applyImpulse(CGVector(dx: 400, dy: 500))
+        ball2 = self.childNode(withName: "ball2") as! SKSpriteNode
+        ball2.physicsBody?.applyImpulse(CGVector(dx: 300, dy: -500))
+        ball3 = self.childNode(withName: "ball3") as! SKSpriteNode
+        ball3.physicsBody?.applyImpulse(CGVector(dx: 400, dy: 500))
+
         
         titleLabel.position = CGPoint(x: -200, y: 200)
         titleLabel.fontSize = 80
