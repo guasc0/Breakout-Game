@@ -53,16 +53,16 @@ class GameOverScene: SKScene {
     
     }
     
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let backToGame = Level1(fileNamed:"Level1")!
         backToGame.scaleMode = .aspectFill
         self.view?.presentScene(backToGame, transition: SKTransition.fade(with: UIColor.black, duration: 0.8))
     }
 
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
-    }
-    
     func blinkingLabel() -> SKAction{
         let duration = 0.5
         let fadeOut = SKAction.fadeAlpha(to: 0.0, duration: duration)

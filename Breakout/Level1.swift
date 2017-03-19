@@ -23,18 +23,11 @@ class Level1: SKScene, SKPhysicsContactDelegate  {
     var ballSpeedLabel = SKLabelNode(fontNamed: "Pixeled")
     var ballSpeed = 1
     var audioPlayer: AVAudioPlayer!
+    var audioPlayer2: AVAudioPlayer!
     
     override func didMove(to view: SKView) {
-        let urlPath = Bundle.main.url(forResource: "collision", withExtension: "wav")
         
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: urlPath!)
-            audioPlayer.prepareToPlay()
-        } catch {
-            print("DANGER on the roof")
-        }
-        
-        
+        addSound()
         ball = self.childNode(withName: "ball") as! SKSpriteNode
         padel = self.childNode(withName: "padel") as! SKSpriteNode
         blocks = self.childNode(withName: "blocks") as! SKSpriteNode
@@ -59,8 +52,26 @@ class Level1: SKScene, SKPhysicsContactDelegate  {
         
        
     }
+
+    func addSound(){
+        let urlPath = Bundle.main.url(forResource: "collision", withExtension: "wav")!
+        let urlPath2 = Bundle.main.url(forResource: "gameover", withExtension: "wav")!
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: urlPath)
+            audioPlayer.prepareToPlay()
+        } catch {
+            print("DANGER on the roof")
+        }
+        
+        do {
+            audioPlayer2 = try AVAudioPlayer(contentsOf: urlPath2)
+            audioPlayer2.prepareToPlay()
+        } catch {
+            print("DANGER on the roof")
+        }
+    }
     
-    // func to randomize between 2 numbers
+    // func to randomize between a negative and positive numbers
     func randXImpulse (lower: Int , upper: Int) -> Int {
         return lower + Int(arc4random_uniform(UInt32(upper - lower + 1)))
     }
@@ -77,7 +88,6 @@ class Level1: SKScene, SKPhysicsContactDelegate  {
             ball.physicsBody?.velocity.dy = 500
             ball.physicsBody?.applyImpulse(CGVector(dx: randX + 2, dy: 0))
             firstTouch = true
-            print(randX)
             
         }
         
@@ -111,25 +121,33 @@ class Level1: SKScene, SKPhysicsContactDelegate  {
                ball.physicsBody?.applyImpulse(CGVector(dx: randXImpulse(lower: -30, upper: 0), dy: 0))
             
             }
+            
             // Checks the score and increase ballspeed
             if totalScore >= 5 && ballSpeed == 1{
-                print("vi kör fart \(ballSpeed)")
                 ball.physicsBody?.velocity.dy = 600
                 ballSpeed += 1
                 ballSpeedLabel.text = "Speed: \(ballSpeed)"
+                print("velocity: \(ball.physicsBody?.velocity.dy)")
                 
                 
             } else if totalScore >= 10 && ballSpeed == 2{
-                print("vi kör fart \(ballSpeed)")
                 ball.physicsBody?.velocity.dy = 700
                 ballSpeed += 1
                 ballSpeedLabel.text = "Speed: \(ballSpeed)"
+                print("velocity: \(ball.physicsBody?.velocity.dy)")
                 
             } else if totalScore >= 15 && ballSpeed == 3{
-                print("vi kör fart \(ballSpeed)")
                 ball.physicsBody?.velocity.dy = 800
                 ballSpeed += 1
                 ballSpeedLabel.text = "Speed: \(ballSpeed)"
+                print("velocity: \(ball.physicsBody?.velocity.dy)")
+                
+            } else if totalScore >= 20 && ballSpeed == 4{
+                ball.physicsBody?.velocity.dy = 900
+                ballSpeed += 1
+                ballSpeedLabel.text = "Speed: \(ballSpeed)"
+                print("velocity: \(ball.physicsBody?.velocity.dy)")
+                
                 
             }
         }
@@ -155,8 +173,6 @@ class Level1: SKScene, SKPhysicsContactDelegate  {
     
     override func update(_ currentTime: TimeInterval) {
     
-        
-        
         scoreLabel.text = "Score: \(totalScore)"
         if totalScore == 25{
             
@@ -170,7 +186,7 @@ class Level1: SKScene, SKPhysicsContactDelegate  {
             
             let youLostScene = GameOverScene(size: self.frame.size, playerWon:false)
             self.view?.presentScene(youLostScene, transition: SKTransition.doorway(withDuration: 1.0))
-        
+            audioPlayer2.play()
         }
         
         Level1.score = totalScore

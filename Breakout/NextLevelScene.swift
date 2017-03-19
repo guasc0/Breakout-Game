@@ -43,13 +43,7 @@ class NextLevelScene: SKScene {
         nextLevel.text = "Tap the screen to continue to level 2"
         addChild(nextLevel)
         
-        
-        
-        
-
-       
-        
-        
+    
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -58,8 +52,6 @@ class NextLevelScene: SKScene {
         self.view?.presentScene(nextLevel, transition: SKTransition.fade(with: UIColor.black, duration: 0.8))
     }
         
-    
-    
     func blinkingLabel() -> SKAction{
         let duration = 0.5
         let fadeOut = SKAction.fadeAlpha(to: 0.0, duration: duration)
