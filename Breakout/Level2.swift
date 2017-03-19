@@ -26,7 +26,7 @@ class Level2: SKScene, SKPhysicsContactDelegate  {
     var ballSpeed = 1
     var audioPlayer: AVAudioPlayer!
     var audioPlayer2: AVAudioPlayer!
-    
+    var ballVelocity = 500
     override func didMove(to view: SKView) {
         
         addSound()
@@ -116,6 +116,12 @@ class Level2: SKScene, SKPhysicsContactDelegate  {
         
         if bodyAName == "ball" && bodyBName == "padel" || bodyAName == "padel" && bodyBName == "ball" {
             
+            // checks so the speed of the ball doesn't get under 500
+            // if so it sets it to start velocity
+            if Int((ball.physicsBody?.velocity.dy)!) < ballVelocity{
+                ball.physicsBody?.velocity.dy = CGFloat(ballVelocity)
+            }
+            
             // check where the padel is and gives it a push in the opposite direction
             if padel.position.x < -150 {
                 ball.physicsBody?.applyImpulse(CGVector(dx: randXImpulse(lower: 0, upper: 30), dy: 0))
@@ -127,38 +133,44 @@ class Level2: SKScene, SKPhysicsContactDelegate  {
             
             // Checks the score and increase ballspeed
             if totalScore >= 30 && ballSpeed == 1{
-                ball.physicsBody?.velocity.dy = 600
+                ballVelocity = 600
+                ball.physicsBody?.velocity.dy = CGFloat(ballVelocity)
                 ballSpeed += 1
                 ballSpeedLabel.text = "Speed: \(ballSpeed)"
                 print("velocity: \(ball.physicsBody?.velocity.dy)")
                 
                 
             } else if totalScore >= 35 && ballSpeed == 2{
-                ball.physicsBody?.velocity.dy = 700
+                ballVelocity = 700
+                ball.physicsBody?.velocity.dy = CGFloat(ballVelocity)
                 ballSpeed += 1
                 ballSpeedLabel.text = "Speed: \(ballSpeed)"
                 print("velocity: \(ball.physicsBody?.velocity.dy)")
                 
             } else if totalScore >= 40 && ballSpeed == 3{
-                ball.physicsBody?.velocity.dy = 800
+                ballVelocity = 800
+                ball.physicsBody?.velocity.dy = CGFloat(ballVelocity)
                 ballSpeed += 1
                 ballSpeedLabel.text = "Speed: \(ballSpeed)"
                 print("velocity: \(ball.physicsBody?.velocity.dy)")
                 
             } else if totalScore >= 45 && ballSpeed == 4{
-                ball.physicsBody?.velocity.dy = 900
+                ballVelocity = 900
+                ball.physicsBody?.velocity.dy = CGFloat(ballVelocity)
                 ballSpeed += 1
                 ballSpeedLabel.text = "Speed: \(ballSpeed)"
                 print("velocity: \(ball.physicsBody?.velocity.dy)")
                 
             } else if totalScore >= 50 && ballSpeed == 5{
-                ball.physicsBody?.velocity.dy = 950
+                ballVelocity = 950
+                ball.physicsBody?.velocity.dy = CGFloat(ballVelocity)
                 ballSpeed += 1
                 ballSpeedLabel.text = "Speed: \(ballSpeed)"
                 print("velocity: \(ball.physicsBody?.velocity.dy)")
                 
             } else if totalScore >= 55 && ballSpeed == 6{
-                ball.physicsBody?.velocity.dy = 1000
+                ballVelocity = 1000
+                ball.physicsBody?.velocity.dy = CGFloat(ballVelocity)
                 ballSpeed += 1
                 ballSpeedLabel.text = "Speed: \(ballSpeed)"
                 print("velocity: \(ball.physicsBody?.velocity.dy)")
